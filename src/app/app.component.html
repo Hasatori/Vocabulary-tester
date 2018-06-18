@@ -1,22 +1,81 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-navigation-bar></app-navigation-bar>
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="row">
+<div class="col-4"></div>
+<div class=" col-4">
+<!-- Default form login -->
+  <!--Section: Live preview-->
+  <section class="form-light">
+
+    <!--Form without header-->
+    <div class="card">
+
+      <div class="card-body mx-4">
+
+        <!--Header-->
+        <div class="text-center">
+          <h3 class="pink-text mb-5"><strong>Sign up</strong></h3>
+        </div>
+
+        <!--Body-->
+        <div class="md-form">
+          <input type="text" id="Form-email2" class="form-control">
+          <label for="Form-email2">Your email</label>
+        </div>
+
+        <div class="md-form pb-3">
+          <input type="password" id="Form-pass2" class="form-control">
+          <label for="Form-pass2">Your password</label>
+          <div class="form-check my-4">
+            <input class="form-check-input" type="checkbox" id="defaultCheck12">
+            <label for="defaultCheck12" class="grey-text">Accept the<a href="#" class="blue-text"> Terms and Conditions</a></label>
+          </div>
+        </div>
+
+        <!--Grid row-->
+        <div class="row d-flex align-items-center mb-4">
+
+          <!--Grid column-->
+          <div class="col-md-3 col-md-6 text-center">
+            <button type="button" class="btn btn-pink btn-block btn-rounded z-depth-1">Sign up</button>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-6">
+            <p class="font-small grey-text d-flex justify-content-end">Have an account? <a href="#" class="blue-text ml-1"> Log in</a></p>
+          </div>
+          <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+      </div>
+
+      <!--Footer-->
+      <div class="footer pt-3 mdb-color lighten-3">
+
+        <div class="row d-flex justify-content-center">
+          <p class="font-small white-text mb-2 pt-3">or Sign up with:</p>
+        </div>
+
+        <div class="row mt-2 mb-3 d-flex justify-content-center">
+          <!--Facebook-->
+          <a class="fa-lg p-2 m-2 fb-ic"><i class="fa fa-facebook white-text fa-lg"> </i></a>
+          <!--Twitter-->
+          <a class="fa-lg p-2 m-2 tw-ic"><i class="fa fa-twitter white-text fa-lg"> </i></a>
+          <!--Google +-->
+          <a class="fa-lg p-2 m-2 gplus-ic"><i class="fa fa-google-plus white-text fa-lg"> </i></a>
+        </div>
+
+      </div>
+
+    </div>
+    <!--/Form without header-->
+
+  </section>
+  <!--Section: Live preview-->
+<!-- Default form login -->
 </div>
-<h2 class="text-danger">Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2 ><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-
-</ul>
-
+<div class="col-4"></div>
+</div>
+<app-footer></app-footer>
