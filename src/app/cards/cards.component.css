@@ -1,0 +1,26 @@
+.myCard:hover{
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0px 0px 40px 10px #000000 !important;
+  transition: all 1s !important;
+}
+.myCard .card-body{
+  z-index: 11;
+}
+.myCard {
+
+  height: 400px;
+  transition: all 1s !important;
+}
+.myCard img{
+  overflow: hidden;
+  z-index: 10;
+  margin-bottom: -15%;
+}
+.myCard .card-body{
+  background-color: #2574A9 !important;
+}
+
+.cardRow,.myCard {
+  margin-bottom: 1rem;
+}
