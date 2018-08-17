@@ -10,7 +10,9 @@ import {LoginComponent} from './login/login.component';
 import {RegistrationComponent} from './registration/registration.component';
 import { CardsComponent } from './cards/cards.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { CardDetailComponent } from './card-detail/card-detail.component';
+import { AllVocabulariesComponent } from './all-vocabularies/all-vocabularies.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,17 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     LoginComponent,
     RegistrationComponent,
-    CardsComponent
+    CardsComponent,
+    CardDetailComponent,
+    AllVocabulariesComponent
 
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],

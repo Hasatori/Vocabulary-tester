@@ -15,12 +15,16 @@
 .myCard img{
   overflow: hidden;
   z-index: 10;
-  margin-bottom: -15%;
+  margin-bottom: -3%;
 }
 .myCard .card-body{
   background-color: #2574A9 !important;
+  max-height: 40%;
 }
 
 .cardRow,.myCard {
   margin-bottom: 1rem;
+}
+.myLink{
+  color:white;;
 }

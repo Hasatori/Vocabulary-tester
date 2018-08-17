@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../categories.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import * as Collections from 'typescript-collections';
 
 @Component({
   selector: 'app-cards',
@@ -10,23 +11,26 @@ import {forEach} from '@angular/router/src/utils/collection';
 export class CardsComponent implements OnInit {
 
   categories: string[][];
-private imgCount:number;
+ // collection: Set<string>;
+  private imgCount: number;
+
   constructor(private categoriesService: CategoriesService) {
 
   }
 
   ngOnInit() {
     this.categories = new Array<Array<string>>();
+   // this.collection = new Set<string>();
     this.showCategories(4);
   }
 
   showCategories(colnum: number) {
-
-    this.categoriesService.getCategories()
+    this.categoriesService.getCategories(true)
       .subscribe((data: string[]) => {
         let count = 0;
         let keys = data.keys();
         for (let i = 0; i < data.length; i++) {
+         // this.collection.add(data[i]['topic']);
           let row = new Array();
           while (count < colnum) {
             row.push(data[i]['topic']);
@@ -44,8 +48,8 @@ private imgCount:number;
       });
   }
 
-getRandomPicture(){
-    let random=Math.floor(Math.random()*(60-1+1)+1);
-        return "https://mdbootstrap.com/img/Photos/Others/images/"+random+".jpg";
-}
+  getRandomPicture() {
+    let random = Math.floor(Math.random() * (60 - 1 + 1) + 1);
+    return 'https://mdbootstrap.com/img/Photos/Others/images/' + random + '.jpg';
+  }
 }
