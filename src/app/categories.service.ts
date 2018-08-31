@@ -13,19 +13,25 @@ export class CategoriesService {
   vocabulariesUrl = 'http://localhost/CreateDictionary/backend/getVoc.php';
   allVocabularies = 'http://localhost:8000/allEnglishVocabularies';
   greeting = 'http://localhost:8000/greeting';
+  images = '../assets/configuration/cardImages.json';
 
   getCategories(sort: boolean) {
     return this.http.get(this.categoriesUrl + '?sort=' + sort);
   }
 
   getCategoryVocabularies(category: string) {
-    return this.http.get(this.vocabulariesUrl + '?category=' + category);
+    return this.http.get(this.vocabulariesUrl + '?Category=' + category);
   }
 
   getAllVocabularies() {
     return this.http.get(this.allVocabularies);
   }
-  getGreeting(){
+
+  getGreeting() {
     return this.http.get(this.getGreeting());
+  }
+
+  getCardImages() {
+    return this.http.get(this.images);
   }
 }

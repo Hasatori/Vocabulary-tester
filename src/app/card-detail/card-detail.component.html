@@ -1,0 +1,23 @@
+<div class="row myRow">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <form class="form-inline ">
+      <input class="form-control form-control-sm mr-3 w-75" id="searchVocabulary" type="text" (input)="filterInput()" placeholder="Search" aria-label="Search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+    <a class="text-success font-weight-bold text-left" href="/cards">back</a>
+    <h2 class="font-weight-bold text-center">{{categoryName}}</h2>
+    <ul>
+      <li class="font-weight-bold list-group-item d-flex justify-content-between align-items-center myListItem" *ngFor="let item of filteredVocabularies | paginate: { itemsPerPage: 10, currentPage: page }">{{item["english_value"]}}</li>
+    </ul>
+    <pagination-controls class="my-pagination" (pageChange)="page = $event"> </pagination-controls>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
