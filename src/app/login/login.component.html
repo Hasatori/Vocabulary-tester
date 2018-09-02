@@ -1,71 +1,58 @@
-
+<div class="row">
+  <div class="col-lg-4"></div>
       <!-- Default form login -->
       <!--Section: Live preview-->
-      <section class="form-light">
+  <div class="col-lg-4 col-sm-12 col-md-12">
+    <!-- Default form login -->
+    <form class="text-center border border-light p-5 loginForm">
 
-        <!--Form without header-->
-        <div class="card">
+      <p class="h4 mb-4">Sign in</p>
 
-          <div class="card-body mx-4">
+      <!-- Email -->
+      <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
 
-            <!--Header-->
-            <div class="text-center">
-              <h3 class="pink-text mb-5"><strong>Sign up</strong></h3>
-            </div>
+      <!-- Password -->
+      <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
 
-            <!--Body-->
-            <div class="md-form">
-              <input type="text" id="Form-email2" class="form-control">
-              <label for="Form-email2">Your email</label>
-            </div>
-
-            <div class="md-form pb-3">
-              <input type="password" id="Form-pass2" class="form-control">
-              <label for="Form-pass2">Your password</label>
-              <div class="form-check my-4">
-                <input class="form-check-input" type="checkbox" id="defaultCheck12">
-                <label for="defaultCheck12" class="grey-text">Accept the<a href="#" class="blue-text"> Terms and Conditions</a></label>
-              </div>
-            </div>
-
-            <!--Grid row-->
-            <div class="row d-flex align-items-center mb-4">
-
-              <!--Grid column-->
-              <div class="col-md-3 col-md-6 text-center signUpButton">
-                <button type="button" class="btn btn-info btn-block btn-rounded z-depth-1">Sign up</button>
-              </div>
-              <!--Grid column-->
-
-              <!--Grid column-->
-              <div class="col-md-6">
-                <p class="font-small grey-text d-flex justify-content-end">Have an account? <a href="#" class="blue-text ml-1"> Log in</a></p>
-              </div>
-              <!--Grid column-->
-
-            </div>
-            <!--Grid row-->
+      <div class="d-flex justify-content-around">
+        <div>
+          <!-- Remember me -->
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
           </div>
-
-          <!--Footer-->
-          <div class="footer  stylish-color-dark pt-3 ">
-
-            <div class="row d-flex justify-content-center">
-              <p class="font-small white-text mb-2 pt-3">or Sign up with:</p>
-            </div>
-
-            <div class="row mt-2 mb-3 d-flex justify-content-center">
-              <!--Facebook-->
-              <a class="fa-lg p-2 m-2 fb-ic"><i class="fa fa-facebook white-text fa-lg"> </i></a>
-              <!--Twitter-->
-              <a class="fa-lg p-2 m-2 tw-ic"><i class="fa fa-twitter white-text fa-lg"> </i></a>
-              <!--Google +-->
-              <a class="fa-lg p-2 m-2 gplus-ic"><i class="fa fa-google-plus white-text fa-lg"> </i></a>
-            </div>
-
-          </div>
-
         </div>
-        <!--/Form without header-->
+        <div>
+          <!-- Forgot password -->
+          <a href="">Forgot password?</a>
+        </div>
+      </div>
 
-      </section>
+      <!-- Sign in button -->
+      <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+      <!-- Register -->
+      <p>Not a member?
+        <a href="">Register</a>
+      </p>
+
+      <!-- Social login -->
+      <p>or sign in with:</p>
+
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-linkedin"></i>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <i class="fa fa-github"></i>
+      </a>
+
+    </form>
+    <!-- Default form login -->
+  </div><div class="col-lg-4"></div>
+</div>

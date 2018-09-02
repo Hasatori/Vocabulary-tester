@@ -9,20 +9,22 @@
     </form>
 </div>
 </div>
-<pagination-controls class="my-pagination" (pageChange)="page = $event">
+
+<div class="cardsContainer">
+  <pagination-controls class="my-pagination" (pageChange)="page = $event">
 
 
-</pagination-controls>
-
+  </pagination-controls>
 <div id="cardContainer" *ngFor="let row of categoriesTable | paginate: { itemsPerPage: 3, currentPage: page }">
   <div class="row">
-    <div class="col-lg-3 cardWrapper " *ngFor="let category of row" id="{{category.name}}" (mouseover)="mouseEnter(category.name)"
+    <div class="col-lg-2 col-sm-6 col-10 col-md-4 cardWrapper " *ngFor="let category of row" id="{{category.name}}" (mouseover)="mouseEnter(category.name)"
          (mouseout)="mouseOf(category.name)">
       <a class="myLink" href="/card-detail#{{category.name}} ">
         <div class="card myCard z-depth-5">
-          <img class="card-img-top" src="{{category.image}}" alt="Card image cap">
-          <div class="card-body elegant-color white-text rounded-bottom">
-            <h4 class="card-title">{{category.name}}</h4>
+
+          <div class="cardBodyContainer">
+          <img class="card-img" src="{{category.image}}" alt="Card image cap">
+            <h4 class="center" >{{category.name}}</h4>
           </div>
         </div>
 
@@ -32,7 +34,8 @@
     </div>
   </div>
 </div>
-<pagination-controls class="my-pagination" (pageChange)="page = $event">
+  <pagination-controls class="my-pagination" (pageChange)="page = $event">
 
-</pagination-controls>
+  </pagination-controls>
 
+</div>

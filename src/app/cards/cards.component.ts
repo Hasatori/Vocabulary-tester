@@ -5,6 +5,8 @@ import * as Collections from 'typescript-collections';
 import * as $ from 'jquery';
 import {Pipe, PipeTransform} from '@angular/core';
 import {ArgumentOutOfRangeError} from 'rxjs/internal-compatibility';
+import {listener} from '@angular/core/src/render3/instructions';
+import {delay} from 'q';
 
 @Component({
   selector: 'app-cards',
@@ -18,20 +20,43 @@ export class CardsComponent implements OnInit {
   categoriesTable: Array<Array<Category>>;
   categories: Category[];
   filteredCategories: Array<Category>;
-  images:Array<string>;
   columnCount: number;
-  // collection: Set<string>;
-  private imgCount: number;
+
 
   constructor(private categoriesService: CategoriesService) {
+    let thisO = this;
+    window.addEventListener('resize', handleResize, true);
 
+    function handleResize() {
+      thisO.setColumns();
+      thisO.categoryIntoTable(thisO.filteredCategories, thisO.columnCount);
+
+
+    }
   }
 
   ngOnInit() {
 
-    this.columnCount = 4;
+    this.setColumns();
     this.setCategories();
+
   }
+
+  setColumns() {
+    let windowWidth = $(window).width();
+    if (windowWidth < 576) {
+      this.columnCount = 1;
+    } else if (windowWidth >= 576 && windowWidth < 768) {
+      this.columnCount = 2;
+    } else if (windowWidth >= 768 && windowWidth < 992) {
+      this.columnCount = 3;
+    } else if (windowWidth >= 992 && windowWidth < 1200) {
+      this.columnCount = 6;
+    } else {
+      this.columnCount = 6;
+    }
+  }
+
 
   setCategories() {
     this.categoriesService.getCategories(true)
@@ -44,18 +69,21 @@ export class CardsComponent implements OnInit {
           console.log(this.categories.length);
         }
         console.log(this.categories.length);
-        this.categoryIntoTable(this.categories, 4);
+        this.filteredCategories = this.categories;
+        this.categoryIntoTable(this.categories, this.columnCount);
       });
 
   }
-setPictures(){
-  this.categoriesService.getCardImages()
-    .subscribe((data: Array<string>) => {
-      for (let image in data) {
-        console.log(image);
-      }
-    });
-}
+
+  setPictures() {
+    this.categoriesService.getCardImages()
+      .subscribe((data: Array<string>) => {
+        for (let image in data) {
+          console.log(image);
+        }
+      });
+  }
+
   private categoryIntoTable(data: Array<Category>, column: number) {
     let count = 0;
     let row = new Array<Category>();
@@ -80,41 +108,56 @@ setPictures(){
     }
   }
 
-  getPicture(category:string) {
+  getPicture(category: string) {
 
     let random = Math.floor(Math.random() * (50 - 1 + 1) + 1);
-    return '../assets/images/cards/'+category+'.jpg';
+    return '../assets/images/cards/' + category + '.jpg';
   }
 
   mouseEnter(category: string) {
 
     var card = $('#' + category);
-    var marginVal = '20px';
+    console.log(card.width());
+    var marginValRegular = (card.width() / 7) + 'px';
+    var marginValEdge = (card.width() / 3.5) + 'px';
+    var marginValRow = (card.height() / 6.7) + 'px';
+    card.find('.myLink .myCard').css('margin-top', marginValRow);
+    card.find('.myLink .myCard').css('margin-bottom', marginValRow);
     try {
       var preceding = card.prev();
 
       var precedingVal = preceding.text();
-      if(precedingVal==""){
-        card.find('.myLink .myCard').css('margin-left',"20px");
-      }
-      this.moveLeft(precedingVal, marginVal);
+
+      this.moveLeft(precedingVal, marginValRegular);
     } catch (e) {
     }
     try {
       var following = card.next();
       var followingVal = following.text();
 
-      this.moveRight(followingVal, marginVal);
+      this.moveRight(followingVal, marginValRegular);
     } catch (e) {
 
+    }
+    if (precedingVal == '') {
+      card.find('.myLink .myCard').css('margin-right', '-' + marginValRegular);
+      card.find('.myLink .myCard').css('margin-left', marginValRegular);
+      this.moveRight(followingVal, marginValEdge);
+    }
+    if (followingVal == '') {
+      card.find('.myLink .myCard').css('margin-left', '-' + marginValRegular);
+      card.find('.myLink .myCard').css('margin-right', marginValRegular);
+      this.moveLeft(precedingVal, marginValEdge);
     }
 
   }
 
   mouseOf(category: string) {
     var card = $('#' + category);
-    card.find('.myLink .myCard').css('margin-left',"0px");
-    card.find('.myLink .myCard').css('margin-right',"0px");
+    card.find('.myLink .myCard').css('margin-left', '0px');
+    card.find('.myLink .myCard').css('margin-right', '0px');
+    card.find('.myLink .myCard').css('margin-top', '0px');
+    card.find('.myLink .myCard').css('margin-bottom', '0px');
     try {
       var preceding = card.prev();
       var marginVal = '0px';
@@ -185,6 +228,8 @@ setPictures(){
     console.log(this.filteredCategories.length);
     this.categoryIntoTable(this.filteredCategories, this.columnCount);
   }
+
+
 }
 
 export class Category {

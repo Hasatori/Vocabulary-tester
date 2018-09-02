@@ -1,3 +1,12 @@
+@import "../../utilities";
+.footer .fa-lg:hover{
+  color: #3399FF !important;
+  transition: linear 0.2s;
+}
+
+.signUpButton button{
+  background-color: #3399FF !important;
+}
 .light-blue-text i{
 
   color: white;
@@ -27,7 +36,8 @@
   opacity: 1;
   transition: all 1s;
 }
-.signUpForm{
+.loginForm{
   background-color: white;
   box-shadow: 0px 40px 50px 0px rgba(0,0,0,0.4);
 }
+

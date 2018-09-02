@@ -1,8 +1,39 @@
-.footer .fa-lg:hover{
-color: #3399FF !important;
-  transition: linear 0.2s;
-}
+.footer .fa-lg:hover {
+  color: #3399FF !important;
+  transition: linear 0.2s; }
 
-.signUpButton button{
-  background-color: #3399FF !important;
-}
+.signUpButton button {
+  background-color: #3399FF !important; }
+
+.light-blue-text i {
+  color: white;
+  padding: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  box-shadow: 0px 4px 10px 0px #000000;
+  opacity: 0.8;
+  transition: all 1s;
+  text-align: center; }
+
+.fa-facebook {
+  background-color: #3B5998; }
+
+.fa-linkedin {
+  background-color: #007BB6; }
+
+.fa-github {
+  background-color: #444444; }
+
+.fa-twitter {
+  background-color: #55ACEE; }
+
+.light-blue-text i:hover {
+  opacity: 1;
+  transition: all 1s; }
+
+.loginForm {
+  background-color: white;
+  box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.4); }
+
+/*# sourceMappingURL=login.component.css.map */

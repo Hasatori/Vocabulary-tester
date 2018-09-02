@@ -1,0 +1,22 @@
+@import "../../utilities";
+.myNavbar {
+  background-color: $background-color2 !important;
+
+  padding: 0 !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+ }
+
+.nav-link{
+
+opacity: 0.7;
+  font-weight: bold;
+  color: $textColor2;
+
+  padding: 20px 10px !important;
+}
+.nav-link:hover{
+  opacity: 1;
+  color: $textColor2;
+}
+
