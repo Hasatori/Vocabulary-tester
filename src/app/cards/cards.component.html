@@ -1,37 +1,39 @@
 <h1 class="text-info text-center font-weight-bold">Topics</h1>
-<div class="row myRow sticky-top">
+<div class="row myRow">
   <div class="col-lg-4"></div>
   <div class="col-lg-4"></div>
   <div class="col-lg-4">
     <form class="form-inline ">
-      <input class="form-control form-control-sm mr-3 w-75" id="searchCategory" type="text" (input)="filterInput()"
-             placeholder="Search" aria-label="Search">
+      <input class="form-control form-control-sm mr-3 w-75" id="searchCategory" type="text" (input)="filterInput()" placeholder="Search" aria-label="Search">
       <i class="fa fa-search" aria-hidden="true"></i>
     </form>
-  </div>
+</div>
 </div>
 
 <div class="cardsContainer">
   <pagination-controls class="my-pagination" (pageChange)="page = $event">
+
+
   </pagination-controls>
-  <div id="cardContainer" *ngFor="let row of categoriesTable | paginate: { itemsPerPage: 3, currentPage: page }">
-    <div class="row">
-      <div class="col-lg-2 col-sm-6 col-10 col-md-4 cardWrapper " *ngFor="let category of row" id="{{category.name}}"
-           (mouseover)="mouseEnter(category.name)"
-           (mouseout)="mouseOf(category.name)">
-        <a class="myLink" href="/card-detail#{{category.name}} ">
-          <div class="card myCard z-depth-5">
+<div id="cardContainer" *ngFor="let row of categoriesTable | paginate: { itemsPerPage: 3, currentPage: page }">
+  <div class="row">
+    <div class="col-lg-2 col-sm-6 col-10 col-md-4 cardWrapper " *ngFor="let category of row" id="{{category.name}}" (mouseover)="mouseEnter(category.name)"
+         (mouseout)="mouseOf(category.name)">
+      <a class="myLink" href="/card-detail#{{category.name}} ">
+        <div class="card myCard z-depth-5">
 
-            <div class="cardBodyContainer">
-              <img class="card-img" src="{{category.image}}" alt="Card image cap">
-              <h4 class="center">{{category.name}}</h4>
-            </div>
+          <div class="cardBodyContainer">
+          <img class="card-img" src="{{category.image}}" alt="Card image cap">
+            <h4 class="center" >{{category.name}}</h4>
           </div>
-        </a>
+        </div>
 
-      </div>
+
+      </a>
+
     </div>
   </div>
+</div>
   <pagination-controls class="my-pagination" (pageChange)="page = $event">
 
   </pagination-controls>

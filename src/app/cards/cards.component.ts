@@ -28,23 +28,18 @@ export class CardsComponent implements OnInit {
     window.addEventListener('resize', handleResize, true);
 
     function handleResize() {
-
       thisO.setColumns();
       thisO.categoryIntoTable(thisO.filteredCategories, thisO.columnCount);
 
 
     }
-
-    this.setColumns();
-    this.setCategories();
-
-    console.log('constructor initialized');
   }
 
   ngOnInit() {
 
-    //  this.setColumns();
-    //   this.setCategories();
+    this.setColumns();
+    this.setCategories();
+
   }
 
   setColumns() {
@@ -71,9 +66,9 @@ export class CardsComponent implements OnInit {
           //  console.log(data[i]['topic']);
           let cat = new Category(data[i]['topic'], this.getPicture(data[i]['topic']));
           this.categories.push(cat);
-          //  console.log(this.categories.length);
+          console.log(this.categories.length);
         }
-        // console.log(this.categories.length);
+        console.log(this.categories.length);
         this.filteredCategories = this.categories;
         this.categoryIntoTable(this.categories, this.columnCount);
       });
@@ -102,7 +97,7 @@ export class CardsComponent implements OnInit {
       for (let value of data) {
         if (count < column) {
           row.push(value);
-          // console.log(value.name);
+          console.log(value.name);
           count++;
         } else {
           this.categoriesTable.push(row);
@@ -118,16 +113,7 @@ export class CardsComponent implements OnInit {
     let random = Math.floor(Math.random() * (50 - 1 + 1) + 1);
     return '../assets/images/cards/' + category + '.jpg';
   }
-  private imageExists(image_url){
 
-    var http = new XMLHttpRequest();
-
-    http.open('HEAD', image_url, false);
-    http.send();
-
-    return http.status != 404;
-
-  }
   mouseEnter(category: string) {
 
     var card = $('#' + category);
