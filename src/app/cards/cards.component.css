@@ -7,7 +7,7 @@
   transition: all .6s ease-out !important; }
 
 .myCard:hover .center {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   opacity: 1;
   transition: all .6s ease-out !important; }
 
@@ -41,7 +41,7 @@
 
 .center {
   transition: all .6s ease-out !important;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   position: absolute;
   bottom: -4%;

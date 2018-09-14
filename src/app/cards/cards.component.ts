@@ -102,7 +102,8 @@ export class CardsComponent implements OnInit {
         } else {
           this.categoriesTable.push(row);
           row = new Array<Category>();
-          count = 0;
+          row.push(value);
+          count = 1;
         }
       }
     }
@@ -126,25 +127,25 @@ export class CardsComponent implements OnInit {
     try {
       var preceding = card.prev();
 
-      var precedingVal = preceding.text();
+      var precedingVal = preceding.attr("id");
 
       this.moveLeft(precedingVal, marginValRegular);
     } catch (e) {
     }
     try {
       var following = card.next();
-      var followingVal = following.text();
+      var followingVal = following.attr("id");
 
       this.moveRight(followingVal, marginValRegular);
     } catch (e) {
 
     }
-    if (precedingVal == '') {
+    if (precedingVal == null) {
       card.find('.myLink .myCard').css('margin-right', '-' + marginValRegular);
       card.find('.myLink .myCard').css('margin-left', marginValRegular);
       this.moveRight(followingVal, marginValEdge);
     }
-    if (followingVal == '') {
+    if (followingVal == null) {
       card.find('.myLink .myCard').css('margin-left', '-' + marginValRegular);
       card.find('.myLink .myCard').css('margin-right', marginValRegular);
       this.moveLeft(precedingVal, marginValEdge);
@@ -157,13 +158,13 @@ export class CardsComponent implements OnInit {
     card.find('.myLink .myCard').css('margin-left', '0px');
     card.find('.myLink .myCard').css('margin-right', '0px');
     card.find('.myLink .myCard').css('margin-top', '0px');
-    card.find('.myLink .myCard').css('margin-bottom', '0px');
+    card.find('.myLink .myCard').css('margin-bottom', '20px');
     try {
       var preceding = card.prev();
       var marginVal = '0px';
       preceding.find('.myLink .myCard').css('margin-left', marginVal);
       preceding.find('.myLink .myCard').css('margin-right', marginVal);
-      var precedingVal = preceding.text();
+      var precedingVal = preceding.attr("id");
       this.moveLeft(precedingVal, marginVal);
     } catch (e) {
 
@@ -172,7 +173,7 @@ export class CardsComponent implements OnInit {
       var following = card.next();
       following.find('.myLink .myCard').css('margin-right', marginVal);
       following.find('.myLink .myCard').css('margin-left', marginVal);
-      var followingVal = following.text();
+      var followingVal = following.attr("id");
       this.moveRight(followingVal, marginVal);
     } catch (e) {
 
@@ -187,7 +188,7 @@ export class CardsComponent implements OnInit {
     try {
       var card = $('#' + category);
       var preceding = card.prev();
-      var precedingVal = preceding.text();
+      var precedingVal = preceding.attr("id");
       card.find('.myLink .myCard').css('margin-left', '-' + marginVal);
       card.find('.myLink .myCard').css('margin-right', marginVal);
       this.moveLeft(precedingVal, marginVal);
@@ -204,7 +205,7 @@ export class CardsComponent implements OnInit {
       var card = $('#' + category);
 //     card.addClassName('isMoving');
       var following = card.next();
-      var followingVal = following.text();
+      var followingVal = following.attr("id");
       card.find('.myLink .myCard').css('margin-right', '-' + marginVal);
       card.find('.myLink .myCard').css('margin-left', marginVal);
       this.moveRight(followingVal, marginVal);
@@ -234,10 +235,12 @@ export class CardsComponent implements OnInit {
 
 export class Category {
   name: string;
+  displayName:string
   image: string;
 
   constructor(name: string, image: string) {
     this.image = image;
     this.name = name;
+    this.displayName=this.name.trim().replace(/_/g," ");
   }
 }
