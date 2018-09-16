@@ -7,13 +7,31 @@ import {RegistrationComponent} from '../registration/registration.component';
 import {CardsComponent} from '../cards/cards.component';
 import {CardDetailComponent} from '../card-detail/card-detail.component';
 import {AllVocabulariesComponent} from '../all-vocabularies/all-vocabularies.component';
+import {AuthGuard} from '../guards/auth/auth.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'registration', component: RegistrationComponent},
-  {path: 'cards',component: CardsComponent},
-  {path: 'card-detail',component:CardDetailComponent},
-  {path: 'allVocabularies',component:AllVocabulariesComponent}
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent
+  },
+  {
+    path: 'cards',component: CardsComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'card-detail',
+    component:CardDetailComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'allVocabularies',
+    component:AllVocabulariesComponent,
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({
@@ -23,7 +41,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   declarations: []
-
 })
 export class AppRoutingModule {
 }

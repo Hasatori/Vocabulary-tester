@@ -14,6 +14,7 @@ import { CardDetailComponent } from './card-detail/card-detail.component';
 import { AllVocabulariesComponent } from './all-vocabularies/all-vocabularies.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 
+
 @NgModule({
   declarations: [
     AppComponent,

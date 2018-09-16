@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoriesService} from '../categories.service';
+import {CategoriesService} from '../services/categories/categories.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import * as Collections from 'typescript-collections';
 import * as $ from 'jquery';
@@ -7,6 +7,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {ArgumentOutOfRangeError} from 'rxjs/internal-compatibility';
 import {listener} from '@angular/core/src/render3/instructions';
 import {delay} from 'q';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -22,8 +23,7 @@ export class CardsComponent implements OnInit {
   filteredCategories: Array<Category>;
   columnCount: number;
 
-
-  constructor(private categoriesService: CategoriesService) {
+  constructor(private categoriesService: CategoriesService, private router: Router) {
     let thisO = this;
     window.addEventListener('resize', handleResize, true);
 
@@ -33,6 +33,10 @@ export class CardsComponent implements OnInit {
 
 
     }
+  }
+
+  public cardDetail(categoryName: string) {
+    this.router.navigate(['card-detail'], {queryParams: {categoryName: categoryName}});
   }
 
   ngOnInit() {
@@ -127,14 +131,14 @@ export class CardsComponent implements OnInit {
     try {
       var preceding = card.prev();
 
-      var precedingVal = preceding.attr("id");
+      var precedingVal = preceding.attr('id');
 
       this.moveLeft(precedingVal, marginValRegular);
     } catch (e) {
     }
     try {
       var following = card.next();
-      var followingVal = following.attr("id");
+      var followingVal = following.attr('id');
 
       this.moveRight(followingVal, marginValRegular);
     } catch (e) {
@@ -164,7 +168,7 @@ export class CardsComponent implements OnInit {
       var marginVal = '0px';
       preceding.find('.myLink .myCard').css('margin-left', marginVal);
       preceding.find('.myLink .myCard').css('margin-right', marginVal);
-      var precedingVal = preceding.attr("id");
+      var precedingVal = preceding.attr('id');
       this.moveLeft(precedingVal, marginVal);
     } catch (e) {
 
@@ -173,7 +177,7 @@ export class CardsComponent implements OnInit {
       var following = card.next();
       following.find('.myLink .myCard').css('margin-right', marginVal);
       following.find('.myLink .myCard').css('margin-left', marginVal);
-      var followingVal = following.attr("id");
+      var followingVal = following.attr('id');
       this.moveRight(followingVal, marginVal);
     } catch (e) {
 
@@ -188,7 +192,7 @@ export class CardsComponent implements OnInit {
     try {
       var card = $('#' + category);
       var preceding = card.prev();
-      var precedingVal = preceding.attr("id");
+      var precedingVal = preceding.attr('id');
       card.find('.myLink .myCard').css('margin-left', '-' + marginVal);
       card.find('.myLink .myCard').css('margin-right', marginVal);
       this.moveLeft(precedingVal, marginVal);
@@ -205,7 +209,7 @@ export class CardsComponent implements OnInit {
       var card = $('#' + category);
 //     card.addClassName('isMoving');
       var following = card.next();
-      var followingVal = following.attr("id");
+      var followingVal = following.attr('id');
       card.find('.myLink .myCard').css('margin-right', '-' + marginVal);
       card.find('.myLink .myCard').css('margin-left', marginVal);
       this.moveRight(followingVal, marginVal);
@@ -235,12 +239,12 @@ export class CardsComponent implements OnInit {
 
 export class Category {
   name: string;
-  displayName:string
+  displayName: string;
   image: string;
 
   constructor(name: string, image: string) {
     this.image = image;
     this.name = name;
-    this.displayName=this.name.trim().replace(/_/g," ");
+    this.displayName = this.name.trim().replace(/_/g, ' ');
   }
 }

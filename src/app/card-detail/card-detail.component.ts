@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoriesService} from '../categories.service';
+import {CategoriesService} from '../services/categories/categories.service';
 import {Category} from '../cards/cards.component';
 import * as $ from 'jquery';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-card-detail',
@@ -14,12 +15,14 @@ export class CardDetailComponent implements OnInit {
   public vocabularies: string[];
   public filteredVocabularies: string[];
 
-  constructor(private categoriesService: CategoriesService) {
+  constructor(private categoriesService: CategoriesService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.categoryName = document.location.hash.replace('#', '');
+    this.route.queryParams.subscribe(params => {
+      this.categoryName = params['categoryName'] || '';
+    });
     this.getVocabularies();
   }
 

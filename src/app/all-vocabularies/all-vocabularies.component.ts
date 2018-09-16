@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoriesService} from '../categories.service';
+import {CategoriesService} from '../services/categories/categories.service';
 
 @Component({
   selector: 'app-all-vocabularies',
